@@ -1,4 +1,5 @@
 #include <iostream>
+#include <set>
 #ifndef _INIT_CLASS_
 #define _INIT_CLASS_
 void remove_odd_numbers (std::vector<int>& vect)
@@ -17,11 +18,18 @@ void remove_odd_numbers (std::vector<int>& vect)
 void remove_duplicate_numbers(std::vector<int>& vect)
 {
 	
-	auto itend = vect.end();
-    for (auto it = vect.begin(); it != itend; ++it) {
-        itend = std::remove(it + 1, itend, *it);
+	// auto itend = vect.end();
+    // for (auto it = vect.begin(); it != itend; ++it) {
+        // itend = std::remove(it + 1, itend, *it);
+    // }
+    // vect.erase(itend, vect.end());
+	std::set<int> ss;
+	for (auto it = vect.begin(); it != vect.end(); ++it) {
+		ss.insert(*it);
     }
- 
-    vect.erase(itend, vect.end());
+	vect.clear();
+	for (auto it = ss.begin(); it != ss.end(); ++it) {
+		vect.push_back(*it);
+    }
 }
 #endif
